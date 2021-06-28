@@ -59,22 +59,6 @@ const idInvalidCardCompanies = arrays => {
     return invalidCardCompanies;
 }
 
-// const testValidate = (arrays) => {
-//     for(const array of arrays) {
-//         console.log(validateCred(array));
-//     }
-// }
-
-// testValidate(batch);
-
-//console.log(findInvalidCards([valid1, valid2, invalid1, valid3, invalid3, valid4]))
-
-//const invalidCards = [invalid1,[3,4,2],invalid2,[6,2],[7,2],invalid3,invalid4,invalid5];
-
-//console.log(idInvalidCardCompanies(invalidCards));
-
-
-
-
-
-
+const convertStringToNumberArray = string => {
+    return string.split('').map(char => parseInt(char));
+}
