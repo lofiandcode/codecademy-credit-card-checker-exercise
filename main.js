@@ -25,22 +25,15 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 const validateCred = (array) => {
-
     let sum = array[array.length - 1];
-
     for(let i = array.length - 2; i > 0; i -= 2 ) {
         let doubledValue = array[i] * 2;
         const unchangedValue = array[i - 1];
-        
         if(doubledValue > 9) doubledValue -= 9;
-
         sum += doubledValue + unchangedValue;
-
         if(i === 2) {
             doubledValue = array[i - 2] * 2;
-
             if(doubledValue > 9) doubledValue -= 9;
-
             sum += doubledValue;
         }
     }
@@ -50,6 +43,22 @@ const validateCred = (array) => {
 const findInvalidCards = arrays => {
     return arrays.filter(array => !validateCred(array));
 }
+
+const idInvalidCardCompanies = arrays => {
+    const companies = { 3: 'Amex', 4: 'Visa', 5: 'Mastercard', 6: 'Discover' };
+    let invalidCardCompanies = arrays.map(array => {
+        if (array[0] in companies) return companies[array[0]];
+        else {
+            console.log('Company not found');
+        }
+    })
+    invalidCardCompanies = invalidCardCompanies.filter((company, index) => {
+        if(company === undefined) return false;
+        return invalidCardCompanies.indexOf(company) === index;
+    })
+    return invalidCardCompanies;
+}
+
 // const testValidate = (arrays) => {
 //     for(const array of arrays) {
 //         console.log(validateCred(array));
@@ -60,6 +69,9 @@ const findInvalidCards = arrays => {
 
 //console.log(findInvalidCards([valid1, valid2, invalid1, valid3, invalid3, valid4]))
 
+//const invalidCards = [invalid1,[3,4,2],invalid2,[6,2],[7,2],invalid3,invalid4,invalid5];
+
+//console.log(idInvalidCardCompanies(invalidCards));
 
 
 
