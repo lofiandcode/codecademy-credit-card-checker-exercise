@@ -47,6 +47,9 @@ const validateCred = (array) => {
     return sum % 10 === 0;
 }
 
+const findInvalidCards = arrays => {
+    return arrays.filter(array => !validateCred(array));
+}
 // const testValidate = (arrays) => {
 //     for(const array of arrays) {
 //         console.log(validateCred(array));
@@ -54,6 +57,8 @@ const validateCred = (array) => {
 // }
 
 // testValidate(batch);
+
+//console.log(findInvalidCards([valid1, valid2, invalid1, valid3, invalid3, valid4]))
 
 
 
